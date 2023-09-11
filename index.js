@@ -6,6 +6,12 @@ app.use(exp.json())
 app.use(exp.urlencoded({ extended: true }))
 app.use(cors())
 
+app.get("/", function (req, res) {
+    res.status(200).json({
+        msg: 'welcome to our backend code!'
+    })
+})
+
 app.post('/login', function (req, res) {
     const num = Math.random()
     const token = Math.floor(num * 1000000)
@@ -17,5 +23,5 @@ app.post('/login', function (req, res) {
 })
 
 app.listen(8080, function () {
-    
+
 })
