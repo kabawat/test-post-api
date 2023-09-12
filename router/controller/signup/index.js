@@ -24,7 +24,7 @@ module.exports.signup = (req, res) => {
             token: token.split('.')[0]
         })
     } catch (error) {
-        res.status(200).json({
+        res.status(409).json({
             message: error?.message,
             status: false,
         })
