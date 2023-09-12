@@ -17,6 +17,6 @@ app.post('/login', function (req, res) {
     })
 })
 
-app.listen(8080, function () {
-    console.log(`http://localhost:${8080}`)
+app.listen(80, function () {
+    console.log(`http://localhost:${80}`)
 })
