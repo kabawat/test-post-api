@@ -9,5 +9,5 @@ router.get("/", function (req, res) {
     })
 })
 
-router.post('/sign-up', signup)
+router.post('/sign-up', emailValid, signup)
 module.exports = router

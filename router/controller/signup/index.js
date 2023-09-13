@@ -2,7 +2,6 @@ const jwt = require('jsonwebtoken')
 module.exports.signup = (req, res) => {
     try {
         const { email, fname, lname, password } = req.body
-        console.log({ email, fname, lname, password })
         if (!fname) {
             throw new Error('please Enter a First Name')
         }
