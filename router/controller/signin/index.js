@@ -9,18 +9,20 @@ module.exports.signin = async (req, res) => {
         if (!password) {
             throw new Error('please Enter a password')
         }
+
         let isExist;
         if (username) {
-            isExist = await userModal.findOne({ username: username, password: password })
+            isExist = await userModal.findOne({ username: username, pwd: password })
+
         } else {
-            isExist = await userModal.findOne({ email: email, password: password })
+            isExist = await userModal.findOne({ email: email, pwd: password })
         }
 
         if (!isExist) {
             throw new Error('invalid credentials')
         }
-
-        const token = jwt.sign({ usernmae: isExist?.username }, 'alsdkfj09e029309234')
+        
+        const token = jwt.sign({ username: isExist?.username }, 'alsdkfj09e029309234')
 
 
         res.status(200).json({
