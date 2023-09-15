@@ -38,7 +38,7 @@ module.exports.signup = async (req, res) => {
         const token = jwt.sign({ usernmae }, 'alsdkfj09e029309234')
 
         const formData = new userModal({
-            email, fname, lname, phone, about, address, pwd: password, usernmae
+            email, fname, lname, phone, about, address, pwd: password, usernmae, token
         })
 
         const isSave = await formData.save()
