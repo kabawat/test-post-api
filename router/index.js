@@ -2,6 +2,7 @@ const { Router } = require("express")
 const { signup } = require("./controller/signup")
 const { emailValid } = require("../middleware/email")
 const { signin } = require("./controller/signin")
+const profile = require("./controller/profile")
 const router = Router()
 
 router.get("/", function (req, res) {
@@ -12,4 +13,5 @@ router.get("/", function (req, res) {
 
 router.post('/sign-up', emailValid, signup)
 router.post('/sign-in', signin)
+router.post('/profile', profile)
 module.exports = router
