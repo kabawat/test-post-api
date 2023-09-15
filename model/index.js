@@ -11,7 +11,7 @@ mongoose.connect(DB_URL, {
 })
 
 const userSchema = new mongoose.Schema({
-    usernmae: {
+    username: {
         type: String,
         required: true,
     },

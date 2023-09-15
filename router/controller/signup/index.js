@@ -33,12 +33,12 @@ module.exports.signup = async (req, res) => {
         }
 
         const randomNum = (Math.random() * 10000).toFixed(0)
-        const usernmae = `@${fname}${randomNum}`
+        const username = `${fname}${randomNum}`
 
-        const token = jwt.sign({ usernmae }, 'alsdkfj09e029309234')
+        const token = jwt.sign({ username }, 'alsdkfj09e029309234')
 
         const formData = new userModal({
-            email, fname, lname, phone, about, address, pwd: password, usernmae, token
+            email, fname, lname, phone, about, address, pwd: password, username, token
         })
 
         const isSave = await formData.save()
@@ -51,7 +51,7 @@ module.exports.signup = async (req, res) => {
             message: 'Registration successful!',
             status: true,
             data: {
-                usernmae,
+                username,
                 token
             }
         })
