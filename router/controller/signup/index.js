@@ -1,29 +1,65 @@
 const jwt = require('jsonwebtoken')
-module.exports.signup = (req, res) => {
+const { userModal } = require('../../../model')
+module.exports.signup = async (req, res) => {
+    const { email, fname, lname, phone, about, address, password } = req.body
     try {
-        const { email, fname, lname, password } = req.body
         if (!fname) {
             throw new Error('please Enter a First Name')
         }
+
+        if (!phone) {
+            throw new Error('please Enter a phone')
+        }
+
+        if (!about) {
+            throw new Error('please Enter a about yourself')
+        }
+
+        if (!address) {
+            throw new Error('please Enter your address')
+        }
+
         if (!lname) {
             throw new Error('please Enter a Last Name')
         }
+
         if (!password) {
             throw new Error('please Enter a password')
         }
+
         const isPwds = is_valid_password(password)
-        console.log(isPwds)
         if (isPwds) {
             throw new Error(isPwds)
         }
 
-        const token = jwt.sign({ email }, "ty9we3ys4985lkjtkjkj435")
+        const randomNum = (Math.random() * 10000).toFixed(0)
+        const usernmae = `@${fname}${randomNum}`
+
+        const token = jwt.sign({ usernmae }, 'alsdkfj09e029309234')
+
+        const formData = new userModal({
+            email, fname, lname, phone, about, address, pwd: password, usernmae
+        })
+
+        const isSave = await formData.save()
+
+        if (!isSave) {
+            throw new Error('something wrong')
+        }
+
         res.status(200).json({
             message: 'Registration successful!',
             status: true,
-            token: token.split('.')[0]
+            data: {
+                usernmae,
+                token
+            }
         })
+
     } catch (error) {
+        if (error?.message.includes('E11000 duplicate key error collection')) {
+            error.message = `${email} already exists`
+        }
         res.status(409).json({
             message: error?.message,
             status: false,

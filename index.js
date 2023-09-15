@@ -3,6 +3,7 @@ var bodyParser = require('body-parser')
 const cors = require('cors')
 const fileUpload = require('express-fileupload')
 const app = exp();
+
 const router = require('./router/')
 // app.use(exp.json())
 // app.use(exp.urlencoded({ extended: true }))
