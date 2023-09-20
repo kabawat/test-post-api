@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken')
 const { userModal } = require('../../../model')
 module.exports.signup = async (req, res) => {
     const { email, fname, lname, phone, about, address, password } = req.body
-    const rootDir = path.dirname(require.main.filename);
+    // const rootDir = path.dirname(require.main.filename);
     try {
         if (!fname) {
             throw new Error('please Enter a First Name')
@@ -37,17 +37,18 @@ module.exports.signup = async (req, res) => {
         const randomNum = (Math.random() * 10000).toFixed(0)
         const username = `${fname}${randomNum}`
 
-        const filename = `${username}-${new Date().getTime()}${path.extname(req?.files?.profile.name)}`
-        const saveFile = path.join(rootDir, `public/user/${filename}`);
-        const profile_image = `/user/${filename}`;
+        // const filename = `${username}-${new Date().getTime()}${path.extname(req?.files?.profile.name)}`
+        // const saveFile = path.join(rootDir, `public/user/${filename}`);
+        // const profile_image = `/user/${filename}`;
 
 
 
 
         const token = jwt.sign({ username }, 'alsdkfj09e029309234')
-        req?.files?.profile.mv(saveFile);
+        // req?.files?.profile.mv(saveFile);
         const formData = new userModal({
-            email, fname, lname, phone, about, address, pwd: password, username, token, profile: profile_image
+            email, fname, lname, phone, about, address, pwd: password, username, token,
+            // profile: profile_image
         })
 
         const isSave = await formData.save()
