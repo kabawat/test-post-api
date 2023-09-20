@@ -8,9 +8,11 @@ const app = exp();
 const router = require('./router/')
 // app.use(exp.json())
 // app.use(exp.urlencoded({ extended: true }))
-app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(cors(
+    { origin: ['*', 'http://127.0.0.1:5500/', "http://127.0.0.1:5500/", 'http://localhost:5500/'] }
+))
 app.use(fileUpload())
 app.use('/user', exp.static(path.join(__dirname, 'public/user')))
 app.use(router)
