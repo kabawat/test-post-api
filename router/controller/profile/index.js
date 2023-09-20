@@ -25,6 +25,7 @@ async function profile(req, res) {
                 about: isExist?.about,
                 address: isExist?.address,
                 username: isExist?.username,
+                profile: isExist?.profile
             }
         })
     } catch (error) {

@@ -1,4 +1,5 @@
 const exp = require('express')
+const path = require('path')
 var bodyParser = require('body-parser')
 const cors = require('cors')
 const fileUpload = require('express-fileupload')
@@ -11,6 +12,7 @@ app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(fileUpload())
+app.use('/user', exp.static(path.join(__dirname, 'public/user')))
 app.use(router)
 
 
