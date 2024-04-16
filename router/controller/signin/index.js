@@ -22,7 +22,7 @@ module.exports.signin = async (req, res) => {
             throw new Error('invalid credentials')
         }
         
-        const token = jwt.sign({ username: isExist?.username }, 'alsdkfj09e029309234')
+        const token = jwt.sign({ id: isExist?._id }, 'alsdkfj09e029309234')
 
 
         res.status(200).json({

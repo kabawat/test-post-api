@@ -44,19 +44,19 @@ module.exports.signup = async (req, res) => {
 
 
 
-        const token = jwt.sign({ username }, 'alsdkfj09e029309234')
         // req?.files?.profile.mv(saveFile);
         const formData = new userModal({
             email, fname, lname, phone, about, address, pwd: password, username, token,
             // profile: profile_image
         })
-
+        
         const isSave = await formData.save()
-
+        
         if (!isSave) {
             throw new Error('something wrong')
         }
-
+        
+        const token = jwt.sign({ id:isSave?._id }, 'alsdkfj09e029309234')
         res.status(200).json({
             message: 'Registration successful!',
             status: true,
