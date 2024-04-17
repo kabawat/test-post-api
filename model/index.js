@@ -48,10 +48,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    token: {
-        type: String,
-        required: true
-    },
 })
 
 const userModal = new mongoose.model('userlist', userSchema)
