@@ -6,6 +6,7 @@ async function profile(req, res) {
         const { token } = req.body
 
         const isToken = jwt.verify(token, 'alsdkfj09e029309234')
+        console.log(isToken)
         if (!isToken?.id) {
             throw new Error('invalid token')
         }
