@@ -46,7 +46,7 @@ module.exports.signup = async (req, res) => {
 
         // req?.files?.profile.mv(saveFile);
         const formData = new userModal({
-            email, fname, lname, phone, about, address, pwd: password, username, token,
+            email, fname, lname, phone, about, address, pwd: password, username
             // profile: profile_image
         })
         
