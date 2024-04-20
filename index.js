@@ -3,7 +3,8 @@ const path = require('path')
 const cors = require('cors')
 const app = exp();
 
-const router = require('./router/')
+const router = require('./router/');
+const connect_db = require('./database');
 app.use(exp.json())
 app.use(exp.urlencoded({ extended: true }))
 app.use(cors(
@@ -11,6 +12,7 @@ app.use(cors(
 ))
 // app.use('/user', exp.static(path.join(__dirname, 'public/user')))
 app.use(router)
-app.listen(80, function () {
-    console.log(`http://localhost:${80}`)
+app.listen(8080, async function () {
+    await connect_db()
+    console.log(`http://localhost:${8080}`)
 })
