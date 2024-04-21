@@ -7,6 +7,7 @@ const handalCreateProduct = require("./controller/product/create")
 const handleGetProduct = require("./controller/product/get_data")
 const handleGetSingleProduct = require("./controller/product/get_single_product")
 const handleUpdateProduct = require("./controller/product/update")
+const handleDeleteProduct = require("./controller/product/delete-product")
 const router = Router()
 
 router.get("/", function (req, res) {
@@ -23,6 +24,7 @@ router.post('/product', handalCreateProduct)
 router.get('/product', handleGetProduct)
 router.get('/product/:productId', handleGetSingleProduct);
 router.put('/product/:productId', handleUpdateProduct);
+router.delete('/product/:productId', handleDeleteProduct);
 
 
 module.exports = router
